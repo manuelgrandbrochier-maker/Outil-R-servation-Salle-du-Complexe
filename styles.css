@@ -151,19 +151,23 @@ h1 {
 }
 .type-btns button {
     flex: 1 1 0;
-    padding: 8px 0;
-    border: 1px solid #2980b9;
-    background: #fff;
-    color: #2980b9;
+    padding: 10px 0;
+    border: none;
+    background: #e0f7f7;
+    color: #11706d;
     border-radius: 5px;
-    font-size: 1em;
+    font-size: 1.1em;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 6px #0001;
+    outline: none;
 }
 .type-btns button.selected,
 .type-btns button:focus {
-    background: #2980b9;
+    background: #17a589; /* vert canard */
     color: #fff;
+    box-shadow: 0 4px 12px #17a58944;
 }
 
 /* Dates début/fin côte à côte */
