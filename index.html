@@ -39,6 +39,18 @@
         <div class="modal-content">
             <button class="close-modal" id="closeModal" title="Fermer">&times;</button>
             <form id="reservationForm">
+                <label for="typeDemandeur">Vous êtes :</label>
+                <select id="typeDemandeur" name="typeDemandeur" required>
+                    <option value="">-- Sélectionnez --</option>
+                    <option value="particulier">Particulier</option>
+                    <option value="association">Association</option>
+                </select>
+
+                <div id="associationField" style="display:none;">
+                    <label for="nomAssociation">Nom de l'association :</label>
+                    <input type="text" id="nomAssociation" name="nomAssociation">
+                </div>
+
                 <label for="nom">Nom :</label>
                 <input type="text" id="nom" name="nom" required>
 
@@ -65,5 +77,23 @@
 
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
     <script src="calendar.js"></script>
+    <script>
+    // Affichage conditionnel du champ association
+    document.addEventListener('DOMContentLoaded', function() {
+        var typeDemandeur = document.getElementById('typeDemandeur');
+        var associationField = document.getElementById('associationField');
+        if(typeDemandeur) {
+            typeDemandeur.addEventListener('change', function() {
+                if (this.value === 'association') {
+                    associationField.style.display = 'block';
+                    document.getElementById('nomAssociation').required = true;
+                } else {
+                    associationField.style.display = 'none';
+                    document.getElementById('nomAssociation').required = false;
+                }
+            });
+        }
+    });
+    </script>
 </body>
 </html>
