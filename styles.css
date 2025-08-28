@@ -1,0 +1,165 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6fa;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 32px;
+    color: #2c3e50;
+}
+
+.main-flex {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    margin: 40px auto;
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* Calendrier à gauche */
+#calendar-container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px #0002;
+    padding: 24px;
+    min-width: 600px;
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+#calendar {
+    min-width: 550px;
+    min-height: 600px;
+}
+
+/* Informations salle à droite */
+.salle-info {
+    background: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px #0001;
+    padding: 32px 24px;
+    min-width: 320px;
+    max-width: 400px;
+    flex: 1 1 0;
+    color: #333;
+    font-size: 1.05em;
+}
+
+.salle-info ul {
+    margin: 8px 0 16px 20px;
+    padding: 0;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.35);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal[style*="display: flex"] {
+    display: flex !important;
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 10px;
+    padding: 32px 24px 24px 24px;
+    min-width: 320px;
+    max-width: 95vw;
+    box-shadow: 0 4px 24px #0003;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-modal:hover {
+    color: #e74c3c;
+}
+
+#reservationForm label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+#reservationForm input,
+#reservationForm textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+#reservationForm button[type="submit"] {
+    background: #2980b9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 24px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.2s;
+}
+
+#reservationForm button[type="submit"]:hover {
+    background: #1a5a86;
+}
+
+.confirmation {
+    color: #27ae60;
+    font-weight: bold;
+    margin-top: 16px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .main-flex {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+        max-width: 98vw;
+    }
+    #calendar-container, .salle-info {
+        min-width: unset;
+        max-width: unset;
+    }
+    #calendar {
+        min-width: 0;
+    }
+    .modal-content {
+        min-width: 0;
+        width: 95vw;
+    }
+}

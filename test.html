@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Réservation Salle des Fêtes</title>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Réservation de la Salle des Fêtes</h1>
+    <div class="main-flex">
+        <div id="calendar-container">
+            <div id="calendar"></div>
+        </div>
+        <div class="salle-info">
+            <strong>Salle du Vourzet</strong><br>
+            <b>Capacité :</b><br>
+            304 places assises<br>
+            600 places debout<br>
+            <em>Aucun événement dépassant cette jauge ne sera autorisé</em>
+            <br><br>
+            <b>Équipements inclus :</b>
+            <ul>
+                <li>Sonorisation</li>
+                <li>Éclairage</li>
+                <li>Tables et chaises</li>
+                <li>Cuisine équipée</li>
+            </ul>
+            <b>Équipements non inclus :</b>
+            <ul>
+                <li>Vaisselle (assiettes, verres, etc.)</li>
+                <li>Couverts</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal Popup -->
+    <div class="modal" id="reservationModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal" title="Fermer">&times;</button>
+            <form id="reservationForm">
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" name="nom" required>
+
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="date">Date de réservation :</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="message">Message :</label>
+                <textarea id="message" name="message" rows="3"></textarea>
+
+                <button type="submit">Réserver</button>
+            </form>
+            <div class="confirmation" id="confirmation"></div>
+        </div>
+    </div>
+
+    <hr>
+    <section id="admin-section">
+        <h2>Administration des réservations</h2>
+        <div id="reservations-list"></div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+    <script src="calendar.js"></script>
+</body>
+</html>
