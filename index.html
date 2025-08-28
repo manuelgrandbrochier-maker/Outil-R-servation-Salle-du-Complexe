@@ -39,12 +39,12 @@
         <div class="modal-content">
             <button class="close-modal" id="closeModal" title="Fermer">&times;</button>
             <form id="reservationForm">
-                <label for="typeDemandeur">Vous êtes :</label>
-                <select id="typeDemandeur" name="typeDemandeur" required>
-                    <option value="">-- Sélectionnez --</option>
-                    <option value="particulier">Particulier</option>
-                    <option value="association">Association</option>
-                </select>
+                <label>Vous êtes :</label>
+                <div class="type-btns">
+                    <button type="button" id="btnParticulier" class="selected">Particulier</button>
+                    <button type="button" id="btnAssociation">Association</button>
+                </div>
+                <input type="hidden" id="typeDemandeur" name="typeDemandeur" value="particulier">
 
                 <div id="associationField" style="display:none;">
                     <label for="nomAssociation">Nom de l'association :</label>
@@ -54,11 +54,25 @@
                 <label for="nom">Nom :</label>
                 <input type="text" id="nom" name="nom" required>
 
+                <label for="prenom">Prénom :</label>
+                <input type="text" id="prenom" name="prenom" required>
+
+                <label for="telephone">Numéro de téléphone :</label>
+                <input type="tel" id="telephone" name="telephone" required pattern="^(\+?\d{1,3}[- ]?)?\d{6,14}$" placeholder="ex : 0601020304">
+
+                <div class="dates-flex">
+                    <div>
+                        <label for="date">Date de début :</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div>
+                        <label for="dateFin">Date de fin :</label>
+                        <input type="date" id="dateFin" name="dateFin" required>
+                    </div>
+                </div>
+
                 <label for="email">Email :</label>
                 <input type="email" id="email" name="email" required>
-
-                <label for="date">Date de réservation :</label>
-                <input type="date" id="date" name="date" required>
 
                 <label for="message">Message :</label>
                 <textarea id="message" name="message" rows="3"></textarea>
@@ -78,21 +92,38 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
     <script src="calendar.js"></script>
     <script>
-    // Affichage conditionnel du champ association
+    // Gestion des boutons Particulier/Association
     document.addEventListener('DOMContentLoaded', function() {
+        var btnParticulier = document.getElementById('btnParticulier');
+        var btnAssociation = document.getElementById('btnAssociation');
         var typeDemandeur = document.getElementById('typeDemandeur');
         var associationField = document.getElementById('associationField');
-        if(typeDemandeur) {
-            typeDemandeur.addEventListener('change', function() {
-                if (this.value === 'association') {
-                    associationField.style.display = 'block';
-                    document.getElementById('nomAssociation').required = true;
-                } else {
-                    associationField.style.display = 'none';
-                    document.getElementById('nomAssociation').required = false;
-                }
-            });
+        var nomAssociation = document.getElementById('nomAssociation');
+
+        function selectType(type) {
+            if (type === 'association') {
+                btnAssociation.classList.add('selected');
+                btnParticulier.classList.remove('selected');
+                associationField.style.display = 'block';
+                nomAssociation.required = true;
+                typeDemandeur.value = 'association';
+            } else {
+                btnParticulier.classList.add('selected');
+                btnAssociation.classList.remove('selected');
+                associationField.style.display = 'none';
+                nomAssociation.required = false;
+                typeDemandeur.value = 'particulier';
+            }
         }
+
+        btnParticulier.addEventListener('click', function(e) {
+            e.preventDefault();
+            selectType('particulier');
+        });
+        btnAssociation.addEventListener('click', function(e) {
+            e.preventDefault();
+            selectType('association');
+        });
     });
     </script>
 </body>

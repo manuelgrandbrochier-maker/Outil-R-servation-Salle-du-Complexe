@@ -143,7 +143,40 @@ h1 {
     font-size: 1.1em;
 }
 
-/* Responsive */
+/* Boutons côte à côte pour le choix Particulier/Association */
+.type-btns {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+.type-btns button {
+    flex: 1 1 0;
+    padding: 8px 0;
+    border: 1px solid #2980b9;
+    background: #fff;
+    color: #2980b9;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.type-btns button.selected,
+.type-btns button:focus {
+    background: #2980b9;
+    color: #fff;
+}
+
+/* Dates début/fin côte à côte */
+.dates-flex {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+.dates-flex > div {
+    flex: 1 1 0;
+}
+
+/* Responsive pour les champs côte à côte */
 @media (max-width: 900px) {
     .main-flex {
         flex-direction: column;
@@ -161,5 +194,12 @@ h1 {
     .modal-content {
         min-width: 0;
         width: 95vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .dates-flex {
+        flex-direction: column;
+        gap: 0;
     }
 }
